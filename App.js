@@ -1,15 +1,22 @@
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Button } from 'react-native';
 import {useState} from 'react';
-import Contact from './Contact';
+import Food from './Contact.js';
 
 export default function App() {
-  const [totalAge, setTotalAge] = useState(0);
+  const [totalprice, setTotalprice] = useState(0);
 
   return (
     <View style={styles.container}>
-      <Text style={{fontSize: 24}}>The total age is {totalAge}</Text>
-      <Contact name="Thabo Lebese" phoneNumber="59702211" totalAge={totalAge} setTotalAge={setTotalAge} />
-      <Contact name="Liteboh Neos" phoneNumber="62803322" totalAge={totalAge} setTotalAge={setTotalAge} />
+      <Text style={styles.statusbar}>The total price is {totalprice}</Text>
+      <ScrollView style={styles.scrollor}>
+      <Food item="2L cocacola" Ammount={24} image={require('./assets/cocacola.jpg')} totalprice={totalprice + 24} setTotalprice={setTotalprice} />
+      <Food item ="bread" Ammount={12} image={require('./assets/bread.jpg')} totalprice={totalprice} setTotalprice={setTotalprice} />
+      <Food item ="snaks" Ammount={2} image={require('./assets/sna.png')} totalprice={totalprice} setTotalprice={setTotalprice} />
+      <Food item ="fullmeal" Ammount={50} image={require('./assets/papa.jpg')} totalprice={totalprice} setTotalprice={setTotalprice} />
+      <Food item ="Burger" Ammount={10} image={require('./assets/burger.jpg')} totalprice={totalprice} setTotalprice={setTotalprice} />
+      <Food item ="minichips" Ammount={15} image={require('./assets/chips.jpg')} totalprice={totalprice} setTotalprice={setTotalprice} />
+      <Food item ="large meal" Ammount={60} image={require('./assets/fullmeal.jpg')} totalprice={totalprice} setTotalprice={setTotalprice} />
+      </ScrollView>
     </View>
   );
 }
@@ -17,8 +24,12 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'grey',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  statusbar:{
+    fontSize: 24,
+    marginTop: 20
+  }
 });

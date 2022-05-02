@@ -1,20 +1,25 @@
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import {useState} from 'react'
 
-export default function Contact({name, phoneNumber, totalAge, setTotalAge}) {
-  const [age, setAge] = useState(0);
-  function makeMeOlder(){
-    setAge(age + 1)
-    setTotalAge(totalAge + 1);
+export default function Food({item, Ammount, image, totalprice, setTotalprice}) {
+  const [pay, setPrice] = useState(0);
+  function addprice(){
+    setPrice(Ammount + pay);
+    setTotalprice(totalprice + Ammount);
+  }
+  function deductprice(){
+    setPrice(Ammount - pay);
+    setTotalprice(totalprice - Ammount);
   }
   return (
     <View style={styles.contact}>
-      <Image style={styles.image} source={require('./assets/avatar.png')} />
+      <Image style={styles.image} source={image} />
       <View style={styles.details}>
-        <Text style={styles.name}>{name}</Text>
-        <Text>Age: {age}</Text>
-        <Text>{phoneNumber}</Text>
-        <Button title="Grow Me" onPress={makeMeOlder} />
+        <Text style={styles.name}>{item}</Text>
+          <Text>pay: {pay}</Text>
+           <Text>{pay}</Text>
+         <Button title="Buy item" onPress={addprice} />
+        <Button title="return item" onPress={deductprice} />
       </View>
     </View>
   )
@@ -26,7 +31,7 @@ const styles = StyleSheet.create({
     padding: 10,
     flexDirection: 'row',
     borderWidth: 1,
-    borderColor: '#999',
+    borderColor: 'red',
     borderRadius: 10,
   },
   details: {
